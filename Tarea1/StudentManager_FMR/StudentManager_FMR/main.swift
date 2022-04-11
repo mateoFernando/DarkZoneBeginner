@@ -9,16 +9,15 @@ import Foundation
 
 var option: MenuOption
 let menu = Menu()
-let inputManager = InputManager()
 var studentManager = StudentManager()
 
 repeat {
     menu.show()
 
-    let value = inputManager.getIntWith("Ingrese la opción:",
-                                        errorMessage: "La opción es incorrecta",
-                                        withRange: 1...5)
-    option = MenuOption(rawValue: value) ?? .none
+    let value = Input.Integer(message:"Ingrese la opción:",
+                              errorMessage: "La opción es incorrecta",
+                              range: 1...5).getInput()
+    option = MenuOption(rawValue: Int(value) ?? 0) ?? .none
 
     switch option {
         case .none:

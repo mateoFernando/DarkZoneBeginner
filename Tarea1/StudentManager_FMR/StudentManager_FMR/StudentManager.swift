@@ -1,8 +1,8 @@
 //
-//  StudentManager.swift
+//  StudentManager_v2.swift
 //  StudentManager_FMR
 //
-//  Created by Fernando Daniel on 29/03/22.
+//  Created by Fernando Daniel on 10/04/22.
 //
 
 import Foundation
@@ -10,34 +10,11 @@ import Foundation
 struct StudentManager {
 
     var students: [Student] = []
-    
+
     mutating func addStudent() {
-        print("\n\n***** Agregando alumno *****\n\n")
-
-        let name = inputManager.getStringWith("Ingrese el nombre",
-                                              errorMessage: "Nombre no válido")
-        let lastName = inputManager.getStringWith("Ingrese el apellido",
-                                                  errorMessage: "Apellido no válido")
-        let address  = inputManager.getStringWith("Ingrese la dirección",
-                                                  errorMessage: "Dirección no válida")
-        let dni = getDNIString()
-        let day = inputManager.getIntWith("Ingrese el DÍA de nacimiento",
-                                          errorMessage: "Dato no válido",
-                                          withRange: 1...31)
-        let month = inputManager.getIntWith("Ingrese el MES de nacimiento",
-                                            errorMessage: "Dato no válido",
-                                            withRange: 1...12)
-        let year = inputManager.getIntWith("Ingrese el AÑO de nacimiento",
-                                           errorMessage: "Dato no válido",
-                                           withRange: 1900...2022)
-
-        students.append(Student(name: name,
-                                   lastName: lastName,
-                                   address: address,
-                                   dni: dni,
-                                   birthdate: "\(day)/\(month)/\(year)"))
-
-        print("\n\n!\(name) se agrego correctamente!\n\n")
+        let student = Student.build()
+        students.append(student)
+        print("\n\n!\(student.name) se agrego correctamente!\n\n")
     }
 
     func listStudents() {
@@ -46,7 +23,6 @@ struct StudentManager {
             print("\n\n No cuentas con alumnos \n\n")
             return
         }
-//        let sortedStudents = arrStudents.sorted(by: { $0.lastName < $1.lastName })
         let sortedStudents = sortNames(students)
         for (i, student) in sortedStudents.enumerated() {
             print("\(i+1). \(student.nameInitials) - \(student.fullName)")
@@ -55,20 +31,14 @@ struct StudentManager {
 
     func searchStudent() {
         print("\n\n***** Buscando alumnos *****\n\n")
-
-        let dni = getDNIString()
+        let dni = Student.getDNI()
         guard let student = getStudentWith(dni: dni) else {
             print("No se encontró alumno con DNI: \(dni)")
             return
         }
 
         print("\n\n Alumno con \(dni) encontrado: \n\n")
-        print("Fecha de nacimiento: \(student.birthdate)")
-        print("Edad: \(student.age)")
-        print("DNI: \(student.dni)")
-        print("Nombre completo: \(student.fullName)")
-        print("Dirección: \(student.address)")
-        print("Iniciales: \(student.nameInitials) \n\n")
+        student.detail()
     }
 
     mutating func deleteStudent() {
@@ -78,16 +48,16 @@ struct StudentManager {
             return
         }
 
-        let dni = getDNIString()
+        let dni = Student.getDNI()
         guard let index = getStudentIndexWith(dni: dni) else {
             print("No se encontró alumno con DNI: \(dni)")
             return
         }
 
-        let respuesta = inputManager.getIntWith("\n¿Quieres eliminar al alumuno con DNI \(dni)?\n1.Si\n2.No\n\n",
-                                                errorMessage: "Opción no válida",
-                                                withRange: 1...2)
-        guard let option = DeleteOption(rawValue: respuesta) else { return }
+        let respuesta = Input.Integer(message:"\n¿Quieres eliminar al alumuno con DNI \(dni)?\n1.Si\n2.No\n\n",
+                                      errorMessage: "Opción no válida",
+                                      range:1...2).getInput()
+        guard let option = DeleteOption(rawValue: Int(respuesta) ?? 2) else { return }
         switch option {
             case .yes:
                 removeStudentFromArrayWith(index: index)
@@ -96,6 +66,9 @@ struct StudentManager {
                 print("\n\nRegresando al menu principal\n\n")
         }
     }
+}
+
+extension StudentManager {
 
     private mutating func removeStudentFromArrayWith(index: Int) {
         students.remove(at: index)
@@ -108,13 +81,6 @@ struct StudentManager {
 
     private func getStudentIndexWith(dni: String) -> Int? {
         return students.firstIndex(where: { $0.dni == dni })
-    }
-
-    private func getDNIString() -> String {
-        #warning("Validar que no se repita el DNI")
-        return inputManager.getStringWith("Ingrese el DNI del alumno",
-                                          errorMessage: "DNI no válido",
-                                          withRange: 8...8)
     }
 
     func sortNames(_ list: [Student]) -> [Student] {
@@ -137,5 +103,3 @@ struct StudentManager {
         return array
     }
 }
-
-

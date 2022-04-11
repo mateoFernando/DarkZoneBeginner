@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5E96815527F28B99003B9DB0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E96815427F28B99003B9DB0 /* main.swift */; };
+		5EB20A062803E299000C5F3D /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB20A052803E299000C5F3D /* StudentManager.swift */; };
 		5ED5072227F3C20100371D4B /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED5072127F3C20100371D4B /* InputManager.swift */; };
 		5ED5072427F3C23C00371D4B /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED5072327F3C23C00371D4B /* MenuOption.swift */; };
 		5ED5072627F3C36E00371D4B /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED5072527F3C36E00371D4B /* StudentModel.swift */; };
-		5ED5072827F3C71700371D4B /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED5072727F3C71700371D4B /* StudentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +29,10 @@
 /* Begin PBXFileReference section */
 		5E96815127F28B99003B9DB0 /* StudentManager_FMR */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StudentManager_FMR; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E96815427F28B99003B9DB0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5EB20A052803E299000C5F3D /* StudentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 		5ED5072127F3C20100371D4B /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		5ED5072327F3C23C00371D4B /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		5ED5072527F3C36E00371D4B /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
-		5ED5072727F3C71700371D4B /* StudentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			children = (
 				5E96815427F28B99003B9DB0 /* main.swift */,
 				5ED5072127F3C20100371D4B /* InputManager.swift */,
-				5ED5072727F3C71700371D4B /* StudentManager.swift */,
+				5EB20A052803E299000C5F3D /* StudentManager.swift */,
 				5ED5072327F3C23C00371D4B /* MenuOption.swift */,
 				5ED5072527F3C36E00371D4B /* StudentModel.swift */,
 			);
@@ -133,8 +133,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ED5072227F3C20100371D4B /* InputManager.swift in Sources */,
-				5ED5072827F3C71700371D4B /* StudentManager.swift in Sources */,
 				5ED5072627F3C36E00371D4B /* StudentModel.swift in Sources */,
+				5EB20A062803E299000C5F3D /* StudentManager.swift in Sources */,
 				5ED5072427F3C23C00371D4B /* MenuOption.swift in Sources */,
 				5E96815527F28B99003B9DB0 /* main.swift in Sources */,
 			);
